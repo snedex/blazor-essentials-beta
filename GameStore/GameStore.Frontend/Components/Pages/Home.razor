@@ -1,23 +1,57 @@
 ﻿@page "/"
+@using Models
 
 <PageTitle>Game Catalog</PageTitle>
 
-<table>
-    <thead>
+<table class="table table-striped table-bordered table-hover">
+    <thead class="table-dark">
         <th>Id</th>
         <th>Name</th>
         <th>Genre</th>
-        <th>Price</th>
+        <th class="text-end">Price</th>
         <th>Release Date</th>
         <th></th>
     </thead>
     <tbody>
-
+        @foreach (var game in games)
+        {
+            <tr>
+                <td>@game.Id</td>
+                <td>@game.Name</td>
+                <td>@game.Genre</td>
+                <td class="text-end">@game.Price.ToString("C2")</td>
+                <td>@game.ReleaseDate</td>
+                <td></td>
+            </tr>
+        }
     </tbody>
 </table>
 
 
 @code
 {
-    
+    //TODO: In memory list to proper implementation
+    private GameSummary[] games = [
+        new () {
+            Id = 1, 
+            Name = "Bioshock",
+            Genre = "Roleplaying",
+            Price = 45.99M,
+            ReleaseDate = new DateOnly(2009, 01, 01)
+        },
+        new () {
+            Id = 2, 
+            Name = "Baldur's Gate 3",
+            Genre = "Combat Roleplaying",
+            Price = 79.99M,
+            ReleaseDate = new DateOnly(2023, 08, 01)
+        },
+        new () {
+            Id = 3, 
+            Name = "Vampire Survivors",
+            Genre = "Survivorslike",
+            Price = 9.99M,
+            ReleaseDate = new DateOnly(2023, 02, 01)
+        },
+    ];
 }
