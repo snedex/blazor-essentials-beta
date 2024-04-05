@@ -1,0 +1,14 @@
+﻿@page "/editgame"
+@using Models;
+
+<PageTitle>New Game</PageTitle>
+<h3>EditGame</h3>
+
+@code {
+    private GameDetails game { get; set; } = new()
+    {
+        Name = string.Empty,
+        ReleaseDate = DateOnly.FromDateTime(DateTime.UtcNow)
+    };
+}
+
