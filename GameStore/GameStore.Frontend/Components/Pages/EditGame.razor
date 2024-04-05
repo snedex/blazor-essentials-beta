@@ -1,5 +1,6 @@
 ﻿@page "/editgame"
 @inject NavigationManager NavigationManager
+@inject GamesClient GamesClient
 
 <PageTitle>New Game</PageTitle>
 <h3>New Game</h3>
@@ -51,7 +52,6 @@ else
         };
 
     private GenreClient genreClient = new();
-    private GamesClient gamesClient = new();
 
     private Genre[]? genres;
 
@@ -62,7 +62,7 @@ else
 
     private void HandleSubmit()
     {
-        gamesClient.AddGame(game);
+        GamesClient.AddGame(game);
         NavigationManager.NavigateTo("/");
     }
 }
