@@ -11,7 +11,7 @@ else
 {
     <div class="row">
         <div class="col-md-4">
-            <EditForm Model="@game" FormName="editGame">
+            <EditForm Model="@game" FormName="editGame" OnSubmit="HandleSubmit">
                 <div class="mb-3">
                     <label for="name" class="form-label">Name:</label>
                     <InputText id="name" @bind-Value="game.Name" class="form-control" />
@@ -34,12 +34,14 @@ else
                     <label for="releaseDate" class="form-label">Release Date:</label>
                     <InputDate id="releaseDate" @bind-Value="game.ReleaseDate" class="form-control" />
                 </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </EditForm>
         </div>
     </div>
 }
 
 @code {
+    [SupplyParameterFromForm]
     private GameDetails game { get; set; } = new()
         {
             Name = string.Empty,
@@ -47,11 +49,17 @@ else
         };
 
     private GenreClient genreClient = new();
+    private GamesClient gamesClient = new();
 
     private Genre[]? genres;
 
     protected override void OnInitialized()
     {
         genres = genreClient.GetGenres();
+    }
+
+    private void HandleSubmit()
+    {
+        gamesClient.AddGame(game);
     }
 }

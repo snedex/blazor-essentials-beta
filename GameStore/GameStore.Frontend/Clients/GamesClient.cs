@@ -1,5 +1,4 @@
 ﻿using GameStore.Frontend.Models;
-
 namespace GameStore.Frontend.Clients;
 
 public class GamesClient
@@ -22,12 +21,31 @@ public class GamesClient
         new () {
             Id = 3, 
             Name = "Vampire Survivors",
-            Genre = "Survivorslike",
+            Genre = "Fighting",
             Price = 9.99M,
             ReleaseDate = new DateOnly(2023, 02, 01)
         },
     ];
 
+    private readonly Genre[] genres = new GenreClient().GetGenres();
+
     //Collection expression, fancy!
     public GameSummary[] GetGames => [.. games];
+
+    public void AddGame(GameDetails game)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(game.GenreId);
+        var genre = genres.Single(genre => genre.Id == int.Parse(game.GenreId));
+
+        var GameSummary = new GameSummary()
+        {
+            Id = games.Count + 1,
+            Name = game.Name,
+            Genre = game.Name,
+            Price = game.Price,
+            ReleaseDate = game.ReleaseDate
+        };
+
+        games.Add(GameSummary);
+    }
 }
