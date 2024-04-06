@@ -399,3 +399,6 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+GameStore/GameStore.Api/GameStore.db
+GameStore/GameStore.Api/GameStore.db-shm
+GameStore/GameStore.Api/GameStore.db-wal

@@ -2,7 +2,7 @@
 
 namespace GameStore.Frontend.Clients;
 
-public class GenreClient
+public class GenreClient(HttpClient httpClient)
 {
     private readonly Genre[] genres = [
         new() { Id = 1, Name = "Fighting" },

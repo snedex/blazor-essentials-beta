@@ -1,7 +1,7 @@
 ﻿using GameStore.Frontend.Models;
 namespace GameStore.Frontend.Clients;
 
-public class GamesClient
+public class GamesClient(HttpClient httpClient)
 {
     private readonly List<GameSummary> games = [
         new () {
@@ -27,7 +27,7 @@ public class GamesClient
         },
     ];
 
-    private readonly Genre[] genres = new GenreClient().GetGenres();
+    private readonly Genre[] genres = new GenreClient(httpClient).GetGenres();
 
     //Collection expression, fancy!
     public GameSummary[] GetGames => [.. games];
