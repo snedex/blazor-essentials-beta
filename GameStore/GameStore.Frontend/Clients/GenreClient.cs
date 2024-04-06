@@ -10,6 +10,7 @@ public class GenreClient
         new() { Id = 3, Name = "Sports" },
         new() { Id = 4, Name = "Racing" },
         new() { Id = 5, Name = "Kids and Family" },
+        new() { Id = 6, Name = "Combat Roleplaying" } 
     ];
 
     public Genre[] GetGenres() => genres;
