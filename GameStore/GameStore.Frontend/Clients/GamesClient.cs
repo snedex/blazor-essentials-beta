@@ -41,7 +41,7 @@ public class GamesClient
         {
             Id = games.Count + 1,
             Name = game.Name,
-            Genre = game.Name,
+            Genre = genre.Name,
             Price = game.Price,
             ReleaseDate = game.ReleaseDate
         };
