@@ -78,6 +78,12 @@ public class GamesClient
         existingGame.Genre = genre.Name;
     }
 
+    public void DeleteGame(int id)
+    {
+        var game = GetGameSummaryById(id);
+        games.Remove(game);
+    }
+
     private GameSummary GetGameSummaryById(int id)
     {
         var game = games.Find(game => game.Id == id);
